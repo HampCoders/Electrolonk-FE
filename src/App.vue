@@ -12,6 +12,7 @@ export default {
     return {
       drawer: false,
       items: [
+        { label: "Dashboard", to: "/" },
         { label: "Home", to: "/home" },
         { label: "About", to: "/about" },
         { label: "Contact", to: "/electrical-invoices" },
@@ -46,7 +47,20 @@ export default {
         <language-switcher/>
       </template>
     </pv-toolbar>
-    <pv-drawer v-model:visible="drawer"/>
+
+    <pv-drawer v-model:visible="drawer">
+      <div class="p-4">
+        <div v-for="item in items" :key="item.label" class="mb-2">
+          <router-link
+              :to="item.to"
+              class="block p-2 border-round hover:bg-primary hover:text-white transition-colors"
+          >
+            <i class="pi pi-angle-right mr-2"></i>{{ item.label }}
+          </router-link>
+        </div>
+      </div>
+    </pv-drawer>
+
   </header>
   <main>
     <div class="bg-lavander">

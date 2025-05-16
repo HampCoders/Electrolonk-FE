@@ -14,7 +14,10 @@ import {createRouter, createWebHistory} from "vue-router";
 const HomeComponent = () => import('../public/pages/home.component.vue');
 const AboutComponent = () => import('../public/pages/about.component.vue');
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
-
+const DashboardView = () => import('../domains/dashboard/views/dashboard-view.vue');
+const SchedulePage = () => import('../domains/schedule/pages/schedule-page.vue');
+const InventoryPage = () => import('../domains/inventory/pages/inventory-page.vue');
+const ScheduleManagementComponent = () => import('../domains/schedule/pages/schedule-management.component.vue');
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
  * @description Application route definitions.
@@ -27,7 +30,9 @@ const PageNotFoundComponent = () => import('../public/pages/page-not-found.compo
 const routes = [
     {   path: '/home',                  name: 'home',       component: HomeComponent,               meta: {title: 'Home'}},
     {   path: '/about',                 name: 'about',      component: AboutComponent,              meta: {title: 'About us'}},
-    {   path: '/',                      name: 'default',    redirect: {name: 'home'}},
+    {   path: '/',                      name: 'dashboard',  component: DashboardView,               meta: { title: 'Dashboard' } },
+    {   path: '/schedule',              name: 'schedule',   component: ScheduleManagementComponent, meta: { title: 'Gestión de Agenda' } },
+    {   path: '/inventory',             name: 'inventory',  component: InventoryPage,               meta: { title: 'Gestión de Inventario' } },
     {   path: '/:pathMatch(.*)*',       name: 'not-found',  component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
 ]
 
@@ -55,7 +60,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
     console.log(`Navigating from ${from.name} to ${to.name}`);
     // Set the page title
-    let baseTitle = 'ACME Learning Center';
+    let baseTitle = 'ElectroLink';
     document.title = `${baseTitle} | ${to.meta['title']}`;
     next();
 });
