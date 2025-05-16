@@ -1,0 +1,219 @@
+{
+  "technicians": [
+    {
+      "id": 1,
+      "name": "Leandro",
+      "specialty": "Inspección eléctrica",
+      "location": "Chosica",
+      "available": "Hoy",
+      "ip": "186.160.90.13",
+      "latitude": "-11.935",
+      "longitude": "-76.695"
+    },
+    {
+      "name": "Eric",
+      "specialty": "Empalmes eléctricos",
+      "location": "Cañete",
+      "available": "Hoy",
+      "ip": "186.12.88.103",
+      "latitude": -13.0771,
+      "longitude": -77.3862,
+      "id": 3
+    },
+    {
+      "name": "Ivo",
+      "specialty": "Instalación y empalmes",
+      "location": "Chosica",
+      "available": "Hoy",
+      "ip": "186.160.90.13",
+      "latitude": -11.935,
+      "longitude": -76.695,
+      "id": 4
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "userId": "u123",
+      "rating": 5,
+      "comment": "Excelente servicio, muy profesional y rápido."
+    },
+    {
+      "id": 2,
+      "userId": "u456",
+      "rating": 3,
+      "comment": "El trabajo fue aceptable, pero llegó un poco tarde."
+    },
+    {
+      "id": 3,
+      "userId": "",
+      "rating": "15",
+      "comment": "eqwewqe",
+      "apiId": "v1"
+    },
+    {
+      "id": 4,
+      "userId": "Eric Olivera",
+      "rating": "15",
+      "comment": "Muy bueno el servicio",
+      "apiId": "v1"
+    },
+    {
+      "id": 5,
+      "userId": "Ivo",
+      "rating": "3",
+      "comment": "Tardó en realizar el servicio",
+      "apiId": "v1"
+    },
+    {
+      "id": 6,
+      "userId": "Richard",
+      "rating": "1",
+      "comment": "Mal servicio, no llegó a tiempo",
+      "apiId": "v1"
+    },
+    {
+      "id": 7,
+      "meterNumber": "23243",
+      "periodStart": "2025-05-14",
+      "periodEnd": "2025-05-16",
+      "consumptionKwh": "123",
+      "totalAmount": "123123",
+      "issueDate": "2025-05-15",
+      "dueDate": "2025-05-02",
+      "rate": "234234",
+      "amountDetails": [],
+      "category": "234",
+      "zone": "2342",
+      "receiptNumber": "234234"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "3008339",
+      "meterNumber": "00167761",
+      "periodStart": "2025-03-14T00:00:00.000Z",
+      "periodEnd": "2025-04-14T00:00:00.000Z",
+      "consumptionKwh": 387,
+      "totalAmount": 329.5,
+      "issueDate": "2025-04-15T00:00:00.000Z",
+      "dueDate": "2025-05-02T00:00:00.000Z",
+      "rate": "C1.2",
+      "amountDetails": [
+        {
+          "concept": "Subtotal mes actual",
+          "amount": 256.58
+        },
+        {
+          "concept": "Cargo fijo",
+          "amount": 1.06
+        },
+        {
+          "concept": "Alumbrado público",
+          "amount": 14
+        },
+        {
+          "concept": "Reposición y mantenimiento de conexión",
+          "amount": 49.56
+        },
+        {
+          "concept": "IGV",
+          "amount": 4.14
+        },
+        {
+          "concept": "Cargo por energía",
+          "amount": 275.35
+        }
+      ],
+      "category": "Residencial",
+      "zone": "Lima Norte",
+      "receiptNumber": "S820-0004926452"
+    },
+    {
+      "id": "3008319",
+      "meterNumber": "00167761",
+      "periodStart": "2025-02-14T00:00:00.000Z",
+      "periodEnd": "2025-03-14T00:00:00.000Z",
+      "consumptionKwh": 387,
+      "totalAmount": 329.5,
+      "issueDate": "2025-03-15T00:00:00.000Z",
+      "dueDate": "2025-04-02T00:00:00.000Z",
+      "rate": "C1.2",
+      "amountDetails": [
+        {
+          "concept": "Subtotal mes actual",
+          "amount": 256.58
+        },
+        {
+          "concept": "Cargo fijo",
+          "amount": 1.06
+        },
+        {
+          "concept": "Alumbrado público",
+          "amount": 14
+        },
+        {
+          "concept": "Reposición y mantenimiento de conexión",
+          "amount": 49.56
+        },
+        {
+          "concept": "IGV",
+          "amount": 4.14
+        },
+        {
+          "concept": "Cargo por energía",
+          "amount": 275.35
+        }
+      ],
+      "category": "Residencial",
+      "zone": "Lima Norte",
+      "receiptNumber": "S820-0004926455"
+    },
+    {
+      "id": "1nrfoRj",
+      "meterNumber": "00167761",
+      "periodStart": "2025-05-12T03:05:47.974Z",
+      "periodEnd": "2025-05-12T03:05:47.974Z",
+      "consumptionKwh": 145,
+      "totalAmount": 344,
+      "issueDate": "2025-05-12T03:05:47.974Z",
+      "dueDate": "2025-05-12T03:05:47.974Z",
+      "rate": "C1:2",
+      "amountDetails": [],
+      "category": "Residencial",
+      "zone": "Lima Norte",
+      "receiptNumber": "S820-0004926454",
+      "supplyNumber": "3008333"
+    },
+    {
+      "id": "3008332",
+      "meterNumber": "00167761",
+      "periodStart": "2025-05-12T15:08:06.970Z",
+      "periodEnd": "2025-05-12T15:08:06.970Z",
+      "consumptionKwh": 485,
+      "totalAmount": 365,
+      "issueDate": "2025-05-12T15:08:06.970Z",
+      "dueDate": "2025-05-12T15:08:06.970Z",
+      "rate": "C1:2",
+      "amountDetails": [],
+      "category": "Residencial",
+      "zone": "Lima Norte",
+      "receiptNumber": "S820-000492646"
+    },
+    {
+      "id": "358263881",
+      "meterNumber": "00167762",
+      "periodStart": "2025-05-12T18:50:12.630Z",
+      "periodEnd": "2025-05-12T18:50:12.630Z",
+      "consumptionKwh": 450,
+      "totalAmount": 50,
+      "issueDate": "2025-05-12T18:50:12.630Z",
+      "dueDate": "2025-05-12T18:50:12.630Z",
+      "rate": "C1:1",
+      "amountDetails": [],
+      "category": "Residencial",
+      "zone": "Lima Sur",
+      "receiptNumber": "8697-WQ81381"
+    }
+  ]
+}
