@@ -3,32 +3,32 @@
  * Defines all router and navigation behavior for the application
  */
 
-import {createRouter, createWebHistory} from "vue-router";
-
+import { createRouter, createWebHistory } from 'vue-router'
 
 /**
  * @description Lazy-loaded component imports for route configuration
  * Using dynamic imports to enable code splitting and improve initial load performance
  */
 
-const HomeComponent = () => import('../public/pages/home.component.vue');
-const AboutComponent = () => import('../public/pages/about.component.vue');
-const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
+const HomeComponent = () => import('../public/pages/home.component.vue')
+const AboutComponent = () => import('../public/pages/about.component.vue')
+const RegisterTechnicianComponent = () => import('../public/pages/register-technician.component.vue')
+const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue')
+const TechnicianSearchComponent = () => import('../public/pages/technician-search.component.vue');
+const ReviewManagementComponent =() => import('../contractingManagement/pages/review-management.component.vue');
+const InvoiceManagementComponent =() => import('../contractingManagement/pages/invoice-management.component.vue');
 
-/**
- * @type {import('vue-router').RouteRecordRaw[]}
- * @description Application route definitions.
- * Each route object contains:
- * - path: URL path for the route
- * - name: Unique identifier for the route
- * - component: Vue component to render
- * - meta: Additional metadata including page title
- */
+
 const routes = [
-    {   path: '/home',                  name: 'home',       component: HomeComponent,               meta: {title: 'Home'}},
-    {   path: '/about',                 name: 'about',      component: AboutComponent,              meta: {title: 'About us'}},
-    {   path: '/',                      name: 'default',    redirect: {name: 'home'}},
-    {   path: '/:pathMatch(.*)*',       name: 'not-found',  component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
+  { path: '/home', name: 'home', component: HomeComponent, meta: { title: 'Home' } },
+  { path: '/about', name: 'about', component: AboutComponent, meta: { title: 'About us' } },
+  { path: '/registro-tecnico', name: 'register', component: RegisterTechnicianComponent, meta: { title: 'Registrar Técnico' } },
+  { path: '/buscar-ip', name: 'ip-search', component: TechnicianSearchComponent, meta: { title: 'Buscar por IP' } },
+  { path: '/', name: 'default', redirect: { name: 'home' } },
+  { path: '/:pathMatch(.*)*', name: 'not-found', component: PageNotFoundComponent, meta: { title: 'Page not found' } },
+  { path: '/contratacion-reviews', name: 'reviews', component: ReviewManagementComponent, meta: { title: 'Reviews' } },
+  { path: '/invoices', name: 'invoices', component: InvoiceManagementComponent, meta: { title: 'Invoices' } },
+
 ]
 
 /**
@@ -36,28 +36,21 @@ const routes = [
  * @description Vue Router instance configured with HTML5 history mode
  */
 const router = createRouter({
-    history: createWebHistory(import.meta.env.BASE_URL),
-    routes: routes,
-
-});
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: routes,
+})
 
 /**
  * @description Global navigation guard that runs before each route change
  * Handles:
  * - Navigation logging
  * - Dynamic page title updates based on route metadata
- *
- * @param {import('vue-router').RouteLocationNormalized} to - Target route
- * @param {import('vue-router').RouteLocationNormalized} from - Current route
- * @param {import('vue-router').NavigationGuardNext} next - Function to resolve the navigation
  */
-
 router.beforeEach((to, from, next) => {
-    console.log(`Navigating from ${from.name} to ${to.name}`);
-    // Set the page title
-    let baseTitle = 'ACME Learning Center';
-    document.title = `${baseTitle} | ${to.meta['title']}`;
-    next();
-});
+  console.log(`Navigating from ${from.name || 'N/A'} to ${to.name || 'N/A'}`)
+  const baseTitle = 'ACME Learning Center'
+  document.title = `${baseTitle} | ${to.meta.title || 'ElectroLink'}`
+  next()
+})
 
-export default router;
+export default router

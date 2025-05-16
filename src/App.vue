@@ -12,50 +12,84 @@ export default {
     return {
       drawer: false,
       items: [
-        { label: "Home", to: "/home" },
-        { label: "About", to: "/about" },
-        { label: "Contact", to: "/electrical-invoices" },
+        { label: "Inicio", to: "/home", icon: "pi pi-home" },
+        { label: "Acerca de", to: "/about", icon: "pi pi-info-circle" },
+        { label: "Registrar Técnico", to: "/registro-tecnico", icon: "pi pi-user-plus" },
+        { label: "Buscar por IP", to: "/buscar-ip", icon: "pi pi-map-marker" },
+        { label: "Reviews", to: "/contratacion-reviews", icon: "pi pi-star" },
+        { label: "Registrar facturas", to: "/invoices", icon: "pi pi-user" },
       ],
     };
   },
   methods: {
     toggleDrawer() {
-      this.drawer = !this.drawer
+      this.drawer = !this.drawer;
     }
   }
-}
+};
 </script>
 
 <template>
-  <pv-toast/>
-  <pv-confirm-dialog/>
+  <pv-toast />
+  <pv-confirm-dialog />
+
   <header>
     <pv-toolbar class="bg-sky-blue">
       <template #start>
-        <pv-button class="p-button-text" icon="pi pi-bars" @click="toggleDrawer"/>
-        <h3>ElectroLink</h3>
+        <pv-button class="p-button-text" icon="pi pi-bars" @click="toggleDrawer" />
+        <h3 class="ml-2">ElectroLink</h3>
       </template>
       <template #center>
         <div>
-          <pv-button v-for="item in items" :key="item.label" as-child v-slot="slotProps">
-            <router-link :to="item.to" :class="slotProps['class']">{{ item.label }}</router-link>
+          <pv-button
+            v-for="item in items.slice(0, 2)"
+            :key="item.label"
+            as-child
+            v-slot="slotProps"
+          >
+            <router-link :to="item.to" :class="slotProps['class']">
+              {{ item.label }}
+            </router-link>
           </pv-button>
         </div>
       </template>
       <template #end>
-        <language-switcher/>
+        <language-switcher />
       </template>
     </pv-toolbar>
-    <pv-drawer v-model:visible="drawer"/>
-  </header>
-  <main>
-    <div class="bg-lavander">
-      <router-view/>
 
+    <!-- Sidebar Drawer -->
+    <pv-drawer v-model:visible="drawer" position="left">
+      <div class="p-3">
+        <h4>Opciones</h4>
+        <ul class="p-0 m-0 list-none">
+          <li
+            v-for="item in items"
+            :key="item.label"
+            class="mb-2"
+          >
+            <router-link
+              :to="item.to"
+              class="flex align-items-center gap-2 text-color hover:text-primary"
+              @click="drawer = false"
+            >
+              <i :class="item.icon"></i>
+              <span>{{ item.label }}</span>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </pv-drawer>
+  </header>
+
+  <main>
+    <div class="bg-lavander p-4 min-h-screen">
+      <router-view />
     </div>
   </main>
+
   <footer>
-    <footer-content/>
+    <footer-content />
   </footer>
 </template>
 
@@ -71,7 +105,7 @@ main {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   padding: 10px;
 }
