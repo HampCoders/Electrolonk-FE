@@ -1,0 +1,77 @@
+{
+  "schedules": [
+    {
+      "id": 1,
+      "name": "Schedule 1",
+      "company": "Company A",
+      "district": "District A",
+      "date": "2023-10-01",
+      "time": "08:00"
+    },
+    {
+      "id": 2,
+      "serviceName": "",
+      "electricalComponent": []
+    },
+    {
+      "id": 3,
+      "serviceName": "ewrwr",
+      "electricalComponent": []
+    },
+    {
+      "id": 4,
+      "serviceName": "wewetwetw",
+      "electricalComponent": []
+    }
+  ],
+  "inventory": [
+    {
+      "id": "INV001",
+      "serviceName": "Subestación Principal",
+      "electricalComponent": [
+        {
+          "componentId": "EC001",
+          "componentName": "Transformador Principal",
+          "componentModel": "TR-5000",
+          "componentManufacturer": "Siemens",
+          "installationDate": "2022-03-15",
+          "lastMaintenanceDate": "2024-01-10",
+          "status": "operativo"
+        },
+        {
+          "componentId": "EC002",
+          "componentName": "Panel de Control",
+          "componentModel": "PC-200",
+          "componentManufacturer": "ABB",
+          "installationDate": "2021-06-22",
+          "lastMaintenanceDate": "2023-11-05",
+          "status": "operativo"
+        }
+      ]
+    },
+    {
+      "id": "INV002",
+      "serviceName": "Sistema de Emergencia",
+      "electricalComponent": [
+        {
+          "componentId": "EC003",
+          "componentName": "Disyuntor",
+          "componentModel": "DIS-100",
+          "componentManufacturer": "Schneider Electric",
+          "installationDate": "2022-09-30",
+          "lastMaintenanceDate": "2024-02-18",
+          "status": "requiere mantenimiento"
+        },
+        {
+          "componentId": "EC006",
+          "componentName": "Generador Auxiliar",
+          "componentModel": "GEN-800",
+          "componentManufacturer": "Caterpillar",
+          "installationDate": "2021-05-12",
+          "lastMaintenanceDate": "2023-12-01",
+          "status": "inoperativo"
+        }
+      ]
+    }
+  ]
+}

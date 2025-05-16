@@ -4,6 +4,16 @@
     "about": "About",
     "categories": "Categories"
   },
+  "inventory": {
+    "serviceName": "Service Name",
+    "electricalComponent": "Electrical Component",
+    "componentId": "Component ID",
+    "componentName": "Component Name",
+    "componentModel": "Component Model",
+    "componentManufacturer": "Component Manufacturer",
+    "status": "Status"
+  },
+  "componentForm": "Component Form",
   "authoring-phrase": {
     "intro": "Made with",
     "use": "using",

@@ -13,7 +13,9 @@ import {createRouter, createWebHistory} from "vue-router";
 
 const HomeComponent = () => import('../public/pages/home.component.vue');
 const AboutComponent = () => import('../public/pages/about.component.vue');
+const DashboardView = () => import('../domains/dashboard/views/dashboard-view.vue');
 const PageNotFoundComponent = () => import('../public/pages/page-not-found.component.vue');
+const InventoryManagementComponent = () => import('../domains/inventory/pages/inventory-management.component.vue');
 
 /**
  * @type {import('vue-router').RouteRecordRaw[]}
@@ -27,7 +29,8 @@ const PageNotFoundComponent = () => import('../public/pages/page-not-found.compo
 const routes = [
     {   path: '/home',                  name: 'home',       component: HomeComponent,               meta: {title: 'Home'}},
     {   path: '/about',                 name: 'about',      component: AboutComponent,              meta: {title: 'About us'}},
-    {   path: '/',                      name: 'default',    redirect: {name: 'home'}},
+    {   path: '/',                      name: 'dashboard',  component: DashboardView,               meta: { title: 'Dashboard' } },
+    {   path: '/inventory',             name: 'inventory',  component: InventoryManagementComponent,               meta: { title: 'Gestión de Inventario' } },
     {   path: '/:pathMatch(.*)*',       name: 'not-found',  component: PageNotFoundComponent,       meta: {title: 'Page not found'}},
 ]
 
