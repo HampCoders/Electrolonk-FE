@@ -8,48 +8,5 @@
     "intro": "Made with",
     "use": "using",
     "author": "by {brand} Developer Team"
-  },
-  "review": {
-    "title": "Electric Service Reviews",
-    "user": "User",
-    "rating": "Rating",
-    "comment": "Comment",
-    "seeMore": "See more",
-    "noReviews": "No reviews available."
-  },
-  "reviewIP": {
-    "searchTitle": "Electric Service Search",
-    "searchPlaceholder": "E.g.: Barranco",
-    "searchButton": "Search",
-    "available": "Available",
-    "district": "District",
-    "seeMore": "See more",
-    "ipResultTitle": "IP Location Result",
-    "ipPlaceholder": "Enter IP manually",
-    "ip": "IP",
-    "country": "Country",
-    "region": "Region",
-    "city": "City",
-    "seeOnGoogleMaps": "See on Google Maps"
-  },
-  "invoice": {
-    "title": "Invoice Details",
-    "id": "Invoice ID",
-    "meterNumber": "Meter Number",
-    "periodStart": "Period Start",
-    "periodEnd": "Period End",
-    "consumptionKwh": "Consumption (kWh)",
-    "totalAmount": "Total Amount",
-    "issueDate": "Issue Date",
-    "dueDate": "Due Date",
-    "rate": "Rate",
-    "amountDetails": "Amount Details",
-    "category": "Category",
-    "zone": "Zone",
-    "receiptNumber": "Receipt Number"
-  },
-  "amountDetail": {
-    "concept": "Concept",
-    "amount": "Amount"
   }
 }

@@ -8,49 +8,5 @@
     "intro": "Hecho con",
     "use": "utilizando",
     "author": "por el Equipo de Desarrollo de {brand}"
-  },
-  "review": {
-    "title": "Reviews del servicio eléctrico",
-    "user": "Usuario",
-    "rating": "Calificación",
-    "comment": "Comentario",
-    "seeMore": "Ver más",
-    "noReviews": "No hay reviews disponibles."
-  },
-
-  "reviewIP": {
-    "searchTitle": "Búsqueda de servicio eléctrico",
-    "searchPlaceholder": "Ej: Barranco",
-    "searchButton": "Buscar",
-    "available": "Disponible",
-    "district": "Distrito",
-    "seeMore": "Ver más",
-    "ipResultTitle": "Resultado de ubicación por IP",
-    "ipPlaceholder": "Ingrese IP manualmente",
-    "ip": "IP",
-    "country": "País",
-    "region": "Región",
-    "city": "Ciudad",
-    "seeOnGoogleMaps": "Ver en Google Maps"
-  },
-  "invoice": {
-    "title": "Detalles de la factura",
-    "id": "ID de la factura",
-    "meterNumber": "Número de medidor",
-    "periodStart": "Inicio del período",
-    "periodEnd": "Fin del período",
-    "consumptionKwh": "Consumo (kWh)",
-    "totalAmount": "Monto total",
-    "issueDate": "Fecha de emisión",
-    "dueDate": "Fecha de vencimiento",
-    "rate": "Tarifa",
-    "amountDetails": "Detalles del monto",
-    "category": "Categoría",
-    "zone": "Zona",
-    "receiptNumber": "Número de recibo"
-  },
-  "amountDetail": {
-    "concept": "Concepto",
-    "amount": "Monto"
   }
 }
