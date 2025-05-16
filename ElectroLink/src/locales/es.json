@@ -1,0 +1,38 @@
+{
+  "option": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "categories": "Categorías"
+  },
+  "authoring-phrase": {
+    "intro": "Hecho con",
+    "use": "utilizando",
+    "author": "por el Equipo de Desarrollo de {brand}"
+  },
+  "review": {
+    "title": "Reviews del servicio eléctrico",
+    "user": "Usuario",
+    "rating": "Calificación",
+    "comment": "Comentario",
+    "seeMore": "Ver más",
+    "noReviews": "No hay reviews disponibles."
+  },
+
+  "reviewIP": {
+    "searchTitle": "Búsqueda de servicio eléctrico",
+    "searchPlaceholder": "Ej: Barranco",
+    "searchButton": "Buscar",
+    "available": "Disponible",
+    "district": "Distrito",
+    "seeMore": "Ver más",
+    "ipResultTitle": "Resultado de ubicación por IP",
+    "ipPlaceholder": "Ingrese IP manualmente",
+    "ip": "IP",
+    "country": "País",
+    "region": "Región",
+    "city": "Ciudad",
+    "seeOnGoogleMaps": "Ver en Google Maps"
+  }
+
+
+}
