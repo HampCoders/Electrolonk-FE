@@ -1,121 +1,88 @@
 <script>
-
-import {FilterMatchMode} from '@primevue/core/api';
+import {Toolbar as PvToolbar, Button as PvButton, Card as PvCard, Tag} from 'primevue';
 
 export default {
-  name: "data-manager",
+  name: "DataCardManagerComponent",
+  components: {PvToolbar, PvButton, PvCard, Tag},
   inheritAttrs: false,
   props: {
     items: {type: Array, required: true},
-
-    title:  {type: { singular: '', plural: ''}, required: true},
-
+    title: {type: Object, required: true}, // { singular: '', plural: '' }
     dynamic: {type: Boolean, default: false},
-
-    columns: {type: Array, default: []},
+    columns: {type: Array, default: []}
   },
-  
-
-  emits: ['new-item-requested', 'edit-item-requested', 'delete-item-requested', 'delete-selected-items-requested'],
-
+  emits: ['new-item-requested','edit-item-requested','delete-item-requested','delete-selected-items-requested'],
   data() {
     return {
-
-      selectedItems: [],
-      filters: null
-    }
+      selectedItems: []
+    };
   },
   methods: {
-    initFilters() {
-      this.filters = {global: {value: null, matchMode: FilterMatchMode.CONTAINS}};
-    },
     newItem() {
-      this.$emit('new-item-requested');
+      this.$emit("new-item-requested");
     },
-    confirmDeleteSelected() {
+    confirmDeleteItem(item) {
       this.$confirm.require({
-        message:      `Are you sure you want to delete the selected ${this.title.plural}?`,
-        header:       'Confirmation',
-        icon:         'pi pi-exclamation-triangle',
-        rejectClass:  'p-button-secondary p-button-outlined',
-        rejectLabel:  'Cancel',
-        acceptLabel:  'Delete',
-        acceptClass:  'p-button-danger',
-        accept:       () => this.$emit('delete-selected-items-requested', this.selectedItems),
-        reject:       () => {}
+        message: `Are you sure you want to delete this ${this.title.singular}?`,
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        rejectClass: 'p-button-secondary p-button-outlined',
+        rejectLabel: 'Cancel',
+        acceptLabel: 'Delete',
+        acceptClass: 'p-button-danger',
+        accept: () => this.$emit('delete-item-requested', item)
       });
     },
-    exportToCsv() {
-      this.$refs.dt.exportCSV()
-    },
-
     editItem(item) {
       this.$emit('edit-item-requested', item);
     },
-
-    confirmDeleteItem(item) {
-      this.$confirm.require({
-        message:      `Are you sure you want to delete this ${this.title.singular}?`,
-        header:       'Confirmation',
-        icon:         'pi pi-exclamation-triangle',
-        rejectClass:  'p-button-secondary p-button-outlined',
-        rejectLabel:  'Cancel',
-        acceptLabel:  'Delete',
-        acceptClass:  'p-button-danger',
-        accept:       () => this.$emit('delete-item-requested', item),
-        reject:       () => {}
-      });
-    },
-  },
-  
-
-  created() {
-    this.initFilters();
-  },
-
-}
+    toggleSelectItem(item) {
+      const index = this.selectedItems.indexOf(item);
+      if (index === -1) this.selectedItems.push(item);
+      else this.selectedItems.splice(index, 1);
+    }
+  }
+};
 </script>
 
 <template>
-  <h3>Manage {{ title.plural }}</h3>
-
-  <!-- Toolbar Section -->
-  <pv-toolbar class="mb-4">
-    <template #start>
-      <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
-      <pv-button :disabled="!selectedItems || !selectedItems.length" icon="pi pi-trash" label="Delete" severity="danger"
-                 @click="confirmDeleteSelected"/>
-    </template>
-    <template #end>
-      <pv-button icon="pi pi-download" label="Export" severity="help" @click="exportToCsv($event)"/>
-    </template>
-  </pv-toolbar>
-
-
-  <!-- Data Table Section -->
-  <pv-data-table
-      ref="dt"
-      v-model:selection="selectedItems"
-      :filters="filters"
-      :paginator="true"
-      :rows="10"
-      :rows-per-page-options="[5, 10, 20]"
-      :value="items"
-      current-page-report-template="Showing {first} to {last} of {totalRecords} ${{title.plural}}"
-      data-key="id"
-      paginator-template="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown">
-    <pv-column :exportable="false" selection-mode="multiple" style="width: 3rem"/>
-    <slot name="custom-columns"></slot>
-    <pv-column v-if="dynamic" v-for="column in columns" :key="column.field" :field="column.field" :header="column.header"/>
-    <pv-column :exportable="false" style="min-width:8rem">
-      <template #body="slotProps">
-        <pv-button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editItem(slotProps.data)"/>
-        <pv-button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteItem(slotProps.data)"/>
+  <div>
+    <h3 class="text-xl font-bold mb-4">Manage {{ title.plural }}</h3>
+    <pv-toolbar class="mb-4">
+      <template #start>
+        <pv-button class="mr-2" icon="pi pi-plus" label="New" severity="success" @click="newItem"/>
       </template>
-    </pv-column>
-  </pv-data-table>
+    </pv-toolbar>
+
+    <div v-if="items.length" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <pv-card v-for="item in items" :key="item.id" class="shadow-lg">
+        <template #title>
+          {{ item.name || 'Unnamed Item' }}
+        </template>
+        <template #content>
+          <ul v-if="dynamic">
+            <li v-for="column in columns" :key="column.field">
+              <strong>{{ column.header }}:</strong> {{ item[column.field] }}
+            </li>
+          </ul>
+          <slot name="card-body" :item="item"/>
+        </template>
+        <template #footer>
+          <pv-button icon="pi pi-check-square" outlined rounded class="mr-2"
+                     @click="toggleSelectItem(item)"
+                     :label="selectedItems.includes(item) ? 'Unselect' : 'Select'" />
+          <pv-button icon="pi pi-pencil" outlined rounded class="mr-2" @click="editItem(item)"/>
+          <pv-button icon="pi pi-trash" outlined rounded severity="danger" @click="confirmDeleteItem(item)"/>
+        </template>
+      </pv-card>
+    </div>
+
+    <div v-else class="text-center mt-10 text-gray-500">
+      No {{ title.plural }} available.
+    </div>
+  </div>
 </template>
 
 <style scoped>
-
+/* Optional scoped styles */
 </style>

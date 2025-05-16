@@ -37,8 +37,6 @@ import {
 import pinia from "./pinia.js";
 import router from "./router/index.js";
 import App from "./App.vue";
-import 'leaflet/dist/leaflet.css';
-
 
 const app = createApp(App);
 app.use(i18n)
